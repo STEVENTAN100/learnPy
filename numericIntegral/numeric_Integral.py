@@ -30,15 +30,15 @@ def Richardson(a, b, n):
 
 def Romberg(a, b, e):
     h, k, n = b-a, 1, 1 
-    t1 = (h * (nf(a)+nf(b)))/2
-    s = nf(a+h/2)
+    t1 = (h * (f(a)+f(b)))/2
+    s = f(a+h/2)
     t2 = (t1+h*s)/2
     s2 = (4*t2-t1)/3
     c1, c2 = e, 0
     while abs(c2-c1)>=e:
         c1, k, h, t1, s1, n, s = c2, k+1, h/2, t2, s2, 2*n, 0
         for i in range(n):
-            s += nf(a+(2*i+1)*h/2)
+            s += f(a+(2*i+1)*h/2)
         t2 = (t1+h*s)/2
         s2 = (4*t2-t1)/3
         c2 = (16*s2-s1)/15
