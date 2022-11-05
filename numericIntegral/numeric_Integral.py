@@ -15,6 +15,42 @@ def self_Simpson(a, b, e):
     print('self-Simpson: ',s2)
     print('iteration times: ', int(cmath.log(n,2).real)+1)
 
+def Simpson(a, b, n):
+    if n%2==1:
+        n += 1
+    h, s = (b-a)/n, f(a)+f(b)
+    
+    for i in range(1,n,2):
+        x = a+h*i
+        s += 4*f(x)
+    for i in range(2,n-1,2):
+        x = a+h*i
+        s += 2*f(x)
+    s *= h/3
+    return s
+
+def recursive_Simpson(a,b,s,e):
+    c = (a+b)/2
+    sl, sr = Simpson(a,c,1), Simpson(c,b,1)
+    sn = sl+sr
+    err = abs(sn-s)/15
+    if err<e:
+        s = sn
+        nodes = [a,c,b]
+        return s, err, nodes
+    else:
+        sl, err1, nodes1 = recursive_Simpson(a,c,sl,e/2)
+        sr, err2, nodes2 = recursive_Simpson(c,b,sr,e/2)
+        s, err = sl+sr, err1+err2
+        nodes = nodes1[0:-1]
+        nodes.extend(nodes2)
+    return sl+sr, err, nodes
+
+def adapt_Simpson(a, b, e):
+    s = Simpson(a,b,1)
+    s, err, nodes = recursive_Simpson(a,b,s,e)
+    return s, err, nodes
+
 def complex_Trapezoid(a, b, n):
     h = (b-a)/n
     t = (h * (f(a)+f(b)))/2
