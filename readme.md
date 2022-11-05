@@ -4,7 +4,7 @@ source .venv/bin/activate
 
 deactivate
 
-## 以 $\int_0^4{\arcsin \sqrt{\frac{x}{x+1}}}$ 积分为例（不同算法的运行性能对比）：
+## 以 $\int_0^4{\arcsin \sqrt{\frac{x}{x+1}}}$ 积分为例（不同算法运行性能对比）：
 
 ### 参考的[Burning1997/Adaptive-quadrature](https://github.com/Burning1997/Adaptive-quadrature)的自适应Simpson代码：
 
