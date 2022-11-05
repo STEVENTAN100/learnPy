@@ -3,3 +3,5 @@
 source .venv/bin/activate
 
 deactivate
+
+以$\int_0^3{\arcsin \sqrt{\frac{x}{x+1}}}$为例
