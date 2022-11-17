@@ -1,4 +1,5 @@
 # Strings: ordered, immutable, text representation
+from timeit import default_timer as timer
 my_string = '     hello '
 my_string = my_string.strip()
 print(my_string.upper())
@@ -11,7 +12,6 @@ new_string = ' '.join(my_list)
 print(new_string)
 
 # good or bad?
-from timeit import default_timer as timer
 my_list = ['a'] * 100000
 
 # bad
